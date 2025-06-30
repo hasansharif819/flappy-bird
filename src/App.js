@@ -37,7 +37,7 @@ function App() {
     } else {
       setObjPos(WALL_WIDTH);
       setObjHeight(Math.floor(Math.random() * (WALL_HEIGHT - OBJ_GAP)));
-      if (isStart) setScore((score) => score + 1);
+      if (isStart) setScore((score) => score + 10);
     }
   }, [isStart, objPos]);
 
@@ -66,8 +66,10 @@ function App() {
   return (
     <Home onClick={handler}>
       <div className="score">
-        <span>Score: {score}</span>
+        <ScoreShow>Score: {score}</ScoreShow>
       </div>
+      {/* <ScoreShow>Score: {score}</ScoreShow> */}
+
       <Background height={WALL_HEIGHT} width={WALL_WIDTH}>
         {!isStart ? <Startboard>Click To Start</Startboard> : null}
         <Obj
@@ -153,4 +155,6 @@ const Startboard = styled.div`
 const ScoreShow = styled.div`
   text-align: center;
   background: transparent;
+  color: #000;
+  font-weight: 700;
 `;
